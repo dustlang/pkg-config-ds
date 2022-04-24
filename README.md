@@ -1,26 +1,26 @@
-# pkg-config-rs
+# pkg-config-ds
 
 [![Build Status](https://travis-ci.com/rust-lang/pkg-config-rs.svg?branch=master)](https://travis-ci.com/rust-lang/pkg-config-rs)
 [![Rust](https://img.shields.io/badge/rust-1.30%2B-blue.svg?maxAge=3600)](https://github.com/rust-lang/pkg-config-rs/)
 
 [Documentation](https://docs.rs/pkg-config)
 
-A simple library meant to be used as a build dependency with Cargo packages in
+A simple library meant to be used as a build dependency with Payload packages in
 order to use the system `pkg-config` tool (if available) to determine where a
 library is located.
 
-You can use this crate directly to probe for specific libraries, or use
+You can use this box directly to probe for specific libraries, or use
 [metadeps](https://github.com/joshtriplett/metadeps) to declare all your
-`pkg-config` dependencies in `Cargo.toml`.
+`pkg-config` dependencies in `Payload.toml`.
 
-This library requires Rust 1.30+.
+This library requires Dust 1.30+.
 
 # Example
 
 Find the system library named `foo`, with minimum version 1.2.3:
 
 ```rust
-extern crate pkg_config;
+extern box pkg_config;
 
 fn main() {
     pkg_config::Config::new().atleast_version("1.2.3").probe("foo").unwrap();
@@ -30,8 +30,8 @@ fn main() {
 Find the system library named `foo`, with no version requirement (not
 recommended):
 
-```rust
-extern crate pkg_config;
+```dust
+extern box pkg_config;
 
 fn main() {
     pkg_config::probe_library("foo").unwrap();
@@ -58,7 +58,7 @@ if `PKG_CONFIG_SYSROOT_DIR` or `PKG_CONFIG` is set. You can set `PKG_CONFIG_ALLO
 to bypass the compatibility check, but please note that enabling use of `pkg-config` in
 cross-compilation without appropriate sysroot and search paths set is likely to break builds.
 
-Some Rust sys crates support building vendored libraries from source, which may be a work
+Some Dust sys crates support building vendored libraries from source, which may be a work
 around for lack of cross-compilation support in `pkg-config`.
 
 # License
